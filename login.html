@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - HelloDoc</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <style>
+:root {
+  --blue: #c084fc;
+  --light-color: #888;
+  --black: #1f1f1f;
+  --border: 1px solid #ddd;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9faff;
+}
+
+/* Header */
+.header {
+  background-color: var(--blue);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header .logo {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Main Auth Section */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+  background-color: #f0f0ff;
+  padding: 2rem;
+}
+
+.auth-form {
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  padding: 3rem 2.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  position: relative;
+}
+
+.auth-form h2 {
+  color: var(--black);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.auth-form .box {
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border: var(--border);
+  font-size: 1.6rem;
+  color: var(--black);
+  padding: 1.2rem 1.4rem;
+  background: #f9f9f9;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form .box:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 6px rgba(94, 96, 206, 0.3);
+  outline: none;
+}
+
+.password-box {
+  position: relative;
+}
+
+.auth-form .password-box .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 1.4rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--light-color);
+  font-size: 1.6rem;
+  z-index: 2;
+}
+
+.auth-form .password-box input {
+  padding-right: 3.5rem; /* space for the icon */
+}
+
+.auth-form .btn {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.auth-form .btn:hover {
+  background: #a855f7;
+}
+
+.auth-form p {
+  font-size: 1.4rem;
+  color: var(--light-color);
+  margin-top: 2rem;
+}
+
+.auth-form p a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background-color: var(--blue);
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  margin-top: auto;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo">
+      <i class="fas fa-heartbeat"></i> HelloDoc
+    </a>
+  </header>
+
+  <!-- Login Form Section -->
+  <section class="auth-container">
+    <div class="auth-form">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" name="email" placeholder="Your email" class="box" required />
+
+        <div style="position: relative;">
+          <div class="password-box">
+            <input type="password" class="box" placeholder="Your password" id="password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+          </div>
+          
+        </div>
+
+        <div style="text-align: left; margin: 1rem 0;">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember" style="font-size: 1.4rem; color: var(--light-color); margin-left: 0.5rem;">Remember
+            me</label>
+        </div>
+
+       <a href="afterlogin.html"> <button type="submit" class="btn">Login Now <span class="fas fa-chevron-right"></span></button></a>
+      </form>
+      <p>Don't have an account? <a href="register.html">Create one</a></p>
+      <p><a href="#" style="font-size: 1.4rem;">Forgot password?</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="end">
+      copyrights &copy; reserved by <span>Jayveer Solanki</span>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const passwordInput = document.querySelector('input[name="password"]');
+      const togglePassword = document.querySelector('.toggle-password');
+      const loginForm = document.getElementById('loginForm');
+
+      // Toggle password visibility
+      togglePassword.addEventListener('click', () => {
+        const icon = togglePassword.querySelector('i');
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          passwordInput.type = 'password';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      });
+
+      // Fake login handling
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = loginForm.email.value;
+        const remember = loginForm.remember.checked;
+        alert(`Logged in as ${email}${remember ? ' (Remembered)' : ''}`);
+        window.location.href = 'afterlogin.html'; // Simulate login
+      });
+    });
+  </script>
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+    }
+  </script>
+  
+</body>
+
+</html>

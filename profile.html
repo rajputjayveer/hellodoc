@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile - HelloDoc</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    /* Base Styles */
+    :root {
+      --purple: #c084fc;
+      --dark-purple: #9333ea;
+      --light-purple: #d8b4fe;
+      --black: #1a1a1a;
+      --white: #fff;
+      --light-bg: #f9f9f9;
+      --light-color: #666;
+      --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+      --border: 0.2rem solid rgba(0, 0, 0, 0.1);
+      --outline: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: all 0.2s linear;
+    }
+
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-padding-top: 7rem;
+    }
+
+    body {
+      background: var(--light-bg);
+    }
+
+    section {
+      padding: 2rem 9%;
+    }
+
+    .heading {
+      text-align: center;
+      padding: 2rem 0;
+      padding-bottom: 3rem;
+      font-size: 3.5rem;
+      color: var(--black);
+    }
+
+    .heading span {
+      background: var(--purple);
+      color: #fff;
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.8rem 3rem;
+      font-size: 1.7rem;
+      border-radius: 0.5rem;
+      border: 0.2rem solid var(--black);
+      color: var(--black);
+      cursor: pointer;
+      background: none;
+    }
+
+    .btn:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 9%;
+      background: #fff;
+      box-shadow: var(--box-shadow);
+    }
+
+    .header .logo {
+      font-size: 2.2rem;
+      font-weight: bolder;
+      color: var(--black);
+    }
+
+    .header .logo i {
+      color: var(--purple);
+      margin-right: 0.5rem;
+    }
+
+    .header .navbar a {
+      font-size: 1.7rem;
+      margin: 0 1rem;
+      color: var(--black);
+    }
+
+    .header .navbar a:hover {
+      color: var(--purple);
+    }
+
+    .header .profile-btn {
+      background: var(--light-purple);
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.5rem;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    .header .profile-btn:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .header .profile-btn i {
+      margin-right: 0.5rem;
+    }
+
+    #menu-btn {
+      font-size: 2.5rem;
+      border-radius: 0.5rem;
+      background: #eee;
+      color: var(--purple);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Profile Section */
+    .profile-container {
+      max-width: 1200px;
+      margin: 8rem auto 3rem;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: var(--box-shadow);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .profile-avatar {
+      width: 12rem;
+      height: 12rem;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 3rem;
+      border: 0.5rem solid var(--light-purple);
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info h2 {
+      font-size: 2.5rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info p {
+      font-size: 1.6rem;
+      color: var(--light-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--purple);
+    }
+
+    .stat-item p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+    }
+
+    .profile-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+    }
+
+    .profile-sidebar {
+      background: #f5f5f5;
+      padding: 2rem;
+      border-radius: 0.5rem;
+    }
+
+    .profile-menu {
+      list-style: none;
+      margin-bottom: 3rem;
+    }
+
+    .profile-menu li {
+      margin-bottom: 1rem;
+    }
+
+    .profile-menu a {
+      display: block;
+      padding: 1rem;
+      font-size: 1.6rem;
+      color: var(--black);
+      border-radius: 0.5rem;
+    }
+
+    .profile-menu a:hover,
+    .profile-menu a.active {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .profile-menu a i {
+      margin-right: 1rem;
+    }
+
+    .emergency-contact {
+      background: #fff8f8;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      border-left: 0.4rem solid #ff6b6b;
+    }
+
+    .emergency-contact h3 {
+      font-size: 1.8rem;
+      color: #ff6b6b;
+      margin-bottom: 1rem;
+    }
+
+    .emergency-contact p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .emergency-btn {
+      display: block;
+      text-align: center;
+      background: #ff6b6b;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 1.6rem;
+    }
+
+    .emergency-btn:hover {
+      background: #ff5252;
+    }
+
+    .profile-main {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: var(--box-shadow);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--black);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: var(--border);
+    }
+
+    .personal-info {
+      margin-bottom: 3rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .info-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .info-item label {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--light-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .info-item p {
+      font-size: 1.6rem;
+      color: var(--black);
+      padding: 1rem;
+      background: #f5f5f5;
+      border-radius: 0.5rem;
+    }
+
+    .edit-btn {
+      background: var(--purple);
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .edit-btn:hover {
+      background: var(--dark-purple);
+    }
+
+    .appointments {
+      margin-bottom: 3rem;
+    }
+
+    .appointment-card {
+      background: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .appointment-info h4 {
+      font-size: 1.6rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .appointment-info p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+    }
+
+    .appointment-info p i {
+      margin-right: 0.5rem;
+      color: var(--purple);
+    }
+
+    .appointment-actions a {
+      font-size: 1.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.3rem;
+      margin-left: 0.5rem;
+    }
+
+    .view-btn {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .cancel-btn {
+      background: #ff6b6b;
+      color: #fff;
+    }
+
+    .medical-records .record-item {
+      background: #f5f5f5;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .record-item h4 {
+      font-size: 1.6rem;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .record-item p {
+      font-size: 1.4rem;
+      color: var(--light-color);
+      margin-bottom: 1rem;
+    }
+
+    .record-item .record-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.3rem;
+      color: var(--light-color);
+    }
+
+    .download-btn {
+      background: var(--purple);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.3rem;
+      font-size: 1.3rem;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+      html {
+        font-size: 55%;
+      }
+
+      .header {
+        padding: 2rem;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #menu-btn {
+        display: initial;
+      }
+
+      .header .navbar {
+        position: absolute;
+        top: 110%;
+        right: -110%;
+        width: 30rem;
+        box-shadow: var(--box-shadow);
+        border-radius: 0.5rem;
+        background: #fff;
+      }
+
+      .header .navbar.active {
+        right: 2rem;
+        transition: 0.4s linear;
+      }
+
+      .header .navbar a {
+        font-size: 2rem;
+        margin: 2rem 2.5rem;
+        display: block;
+      }
+
+      .profile-content {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .appointment-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .appointment-actions {
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      html {
+        font-size: 50%;
+      }
+
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-avatar {
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+
+      .profile-stats {
+        justify-content: center;
+      }
+    }
+
+    .footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2rem;
+}
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  color: var(--black);
+  padding: 1rem 0;
+}
+.footer .box-container .box a {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--light-color);
+  padding: 1rem 0;
+}
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--blue);
+}
+.footer .box-container .box a:hover i {
+  padding-right: 2rem;
+}
+footer {
+  background-color: #ede9fe;
+  color: white;
+}
+footer .end {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  height: 14vh;
+  font-size: 20px;
+  padding-top: 30px;
+  background-color: #e0e7ff;
+}
+footer span {
+  color: var(--blue);
+  font-weight: bolder;
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 2rem;
+  }
+  section {
+    padding: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  #menu-btn {
+    display: initial;
+  }
+  .header .navbar {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    width: 30rem;
+    border: var(--border);
+    background: #fff;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: top right;
+    transition: none;
+  }
+  .header .navbar.active {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.2s ease-out;
+    background-color: #ede9fe;
+  }
+  .header .navbar a {
+    font-size: 2rem;
+    display: block;
+    margin: 2.5rem;
+  }
+}
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
+/* Add this to your existing CSS */
+.btn-login {
+  background: #fff;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+}
+
+.btn-login:hover {
+  background: #fff;
+  color: var(--blue);
+  box-shadow: var(--box-shadow);
+}
+
+/* Responsive adjustments for auth forms */
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 2rem;
+  }
+  
+  .header .navbar a.btn {
+    display: none;
+  }
+}
+
+
+/* App Download Section */
+.app-download {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.app-download h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.app-links a img {
+  max-width: 160px;
+  height: auto;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.app-links a img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .app-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Footer Section */
+footer {
+  background-color: #222;
+  color: #060606;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #312f2f;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #494646;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: #007BFF;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: none;
+  z-index: 999;
+  transition: background 0.3s ease;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo animate__animated animate__fadeInLeft">
+      <i class="fas fa-heartbeat"></i> HelloDoc
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#services">services</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#doctors">doctors</a>
+      <a href="index.html#book">book</a>
+      <a href="index.html#review">review</a>
+      <a href="index.html#blogs">blogs</a>
+      <a href="payment.html">Payment</a>
+      <a href="profile.html" class="profile-btn">
+        <i class="fas fa-user-circle"></i> Profile
+      </a>
+    </nav>
+    <div id="menu-btn" class="fas fa-bars"></div>
+  </header>
+
+  <!-- Profile Section -->
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <img src="mypic.jpg" alt="User Avatar">
+      </div>
+      <div class="profile-info">
+        <h2>Rajput jay</h2>
+        <p>Member since June 2023</p>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <h3>12</h3>
+            <p>Appointments</p>
+          </div>
+          <div class="stat-item">
+            <h3>5</h3>
+            <p>Records</p>
+          </div>
+          <div class="stat-item">
+            <h3>Gold</h3>
+            <p>Membership</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <div class="profile-sidebar">
+        <ul class="profile-menu">
+          <li><a href="#" class="active"><i class="fas fa-user"></i> Personal Information</a></li>
+          <li><a href="#"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+          <li><a href="#"><i class="fas fa-file-medical"></i> Medical Records</a></li>
+          <li><a href="#"><i class="fas fa-prescription-bottle-alt"></i> Prescriptions</a></li>
+          <li><a href="#"><i class="fas fa-heart"></i> Health Data</a></li>
+          <li><a href="#"><i class="fas fa-credit-card"></i> Billing & Payments</a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+
+        <div class="emergency-contact">
+          <h3>Emergency Contact</h3>
+          <p>In case of emergency, please contact our 24/7 support line immediately.</p>
+          <a href="tel:+911234567890" class="emergency-btn"><i class="fas fa-phone-alt"></i> Call Emergency</a>
+        </div>
+      </div>
+
+      <div class="profile-main">
+        <div class="personal-info">
+          <h3 class="section-title">Personal Information</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Full Name</label>
+              <p>Rajput jay</p>
+            </div>
+            <div class="info-item">
+              <label>Date of Birth</label>
+              <p>29 January 2006</p>
+            </div>
+            <div class="info-item">
+              <label>Email Address</label>
+              <p>xyz@example.com</p>
+            </div>
+            <div class="info-item">
+              <label>Phone Number</label>
+              <p>+91 98765 43210</p>
+            </div>
+            <div class="info-item">
+              <label>Gender</label>
+              <p>male</p>
+            </div>
+            <div class="info-item">
+              <label>Blood Group</label>
+              <p>A+</p>
+            </div>
+            <div class="info-item">
+              <label>Address</label>
+              <p>123 Healthcare Lane, Ahmedabad, Gujarat 380001</p>
+            </div>
+            <div class="info-item">
+              <label>Emergency Contact</label>
+              <p>Ajitsinh Rajput(father) - +91 98765 12340</p>
+            </div>
+          </div>
+          <a href="#" class="edit-btn"><i class="fas fa-edit"></i> Edit Information</a>
+        </div>
+
+        <div class="appointments">
+          <h3 class="section-title">Upcoming Appointments</h3>
+          <div class="appointment-card">
+            <div class="appointment-info">
+              <h4>Dr. Aditya Sharma - Cardiology</h4>
+              <p><i class="fas fa-calendar-alt"></i> 25 April 2025, 10:30 AM</p>
+              <p><i class="fas fa-map-marker-alt"></i> HelloDoc Main Hospital, Ahmedabad</p>
+            </div>
+            <div class="appointment-actions">
+              <a href="#" class="view-btn">View</a>
+              <a href="#" class="cancel-btn">Cancel</a>
+            </div>
+          </div>
+          <div class="appointment-card">
+            <div class="appointment-info">
+              <h4>Dr. Kirthi Yeruva - Trauma Specialist</h4>
+              <p><i class="fas fa-calendar-alt"></i> 2 May 2025, 3:15 PM</p>
+              <p><i class="fas fa-video"></i> Virtual Consultation</p>
+            </div>
+            <div class="appointment-actions">
+              <a href="#" class="view-btn">View</a>
+              <a href="#" class="cancel-btn">Cancel</a>
+            </div>
+          </div>
+          <a href="index.html#book" class="btn" style="display: inline-block; margin-top: 1rem;">
+            <i class="fas fa-plus"></i> Book New Appointment
+          </a>
+        </div>
+
+        <div class="medical-records">
+          <h3 class="section-title">Medical Records</h3>
+          <div class="record-item">
+            <h4>Cardiology Checkup Report</h4>
+            <p>Complete cardiac evaluation including ECG and stress test results.</p>
+            <div class="record-meta">
+              <span><i class="fas fa-calendar-alt"></i> 12 March 2025</span>
+              <span><i class="fas fa-user-md"></i> Dr. Aditya Sharma</span>
+            </div>
+            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+          </div>
+          <div class="record-item">
+            <h4>Annual Physical Examination</h4>
+            <p>Complete physical exam with lab work including CBC and metabolic panel.</p>
+            <div class="record-meta">
+              <span><i class="fas fa-calendar-alt"></i> 15 January 2025</span>
+              <span><i class="fas fa-user-md"></i> Dr. Madhu Thumu</span>
+            </div>
+            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Report</a>
+          </div>
+          <a href="#" class="btn" style="display: inline-block; margin-top: 1rem;">
+            <i class="fas fa-plus"></i> Upload Medical Record
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>quick links</h3>
+        <a href="index.html#home"> <i class="fas fa-chevron-right"></i> home </a>
+        <a href="index.html#services"> <i class="fas fa-chevron-right"></i> services </a>
+        <a href="index.html#about"> <i class="fas fa-chevron-right"></i> about </a>
+        <a href="index.html#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
+        <a href="index.html#book"> <i class="fas fa-chevron-right"></i> book </a>
+        <a href="index.html#review"> <i class="fas fa-chevron-right"></i> review </a>
+        <a href="index.html#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
+      </div>
+      <div class="box">
+        <h3>our services</h3>
+        <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> physiotherapy </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> cardiology </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> ambulance </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> telemedicine </a>
+      </div>
+      <div class="box">
+        <h3>contact info</h3>
+        <a href="tel:+917568235462"> <i class="fas fa-phone"></i> +91 7568235462 </a>
+        <a href="tel:+1111432003"> <i class="fas fa-phone"></i> +111-143-2003 </a>
+        <a href="mailto:HelloDoc@gmail.com"> <i class="fas fa-envelope"></i> HelloDoc@gmail.com </a>
+        <a href="mailto:support@HelloDoc.com"> <i class="fas fa-envelope"></i> support@HelloDoc.com </a>
+        <a href="#"> <i class="fas fa-map-marker-alt"></i> Ahmedabad, India - 380001 </a>
+      </div>
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+        <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+        <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+        <a href="#"> <i class="fab fa-youtube"></i> youtube </a>
+      </div>
+    </div>
+    <div class="app-download">
+      <h3>Download Our App</h3>
+      <div class="app-links">
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png"
+            alt="Google Play"></a>
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png"
+            alt="App Store"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="end">
+      <p>copyrights &copy; <span id="year"></span> reserved by <span>HelloDoc Healthcare</span></p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">HIPAA Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Mobile menu toggle
+      const menuBtn = document.querySelector('#menu-btn');
+      const navbar = document.querySelector('.navbar');
+      
+      menuBtn.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        menuBtn.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+          navbar.classList.remove('active');
+          menuBtn.classList.remove('fa-times');
+        });
+      });
+      
+      // Back to top button
+      const backToTopBtn = document.querySelector('.back-to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = 'block';
+        } else {
+          backToTopBtn.style.display = 'none';
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      
+      // Profile menu active state
+      const profileMenuLinks = document.querySelectorAll('.profile-menu a');
+      
+      profileMenuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          profileMenuLinks.forEach(item => item.classList.remove('active'));
+          link.classList.add('active');
+          
+          // Here you would typically load the appropriate content section via AJAX
+          // For this example, we'll just scroll to the corresponding section
+          const sectionId = link.getAttribute('href');
+          if (sectionId && sectionId !== '#') {
+            document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

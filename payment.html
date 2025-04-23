@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment - HelloDoc Healthcare</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+    :root {
+      --purple: #c084fc;
+      --dark-purple: #9333ea;
+      --light-purple: #d8b4fe;
+      --black: #1a1a1a;
+      --white: #fff;
+      --light-bg: #f9f9f9;
+      --light-color: #666;
+      --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+      --border: 0.2rem solid rgba(0, 0, 0, 0.1);
+      --outline: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: all 0.2s linear;
+    }
+
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-padding-top: 7rem;
+    }
+
+    body {
+      background: var(--light-bg);
+    }
+
+    section {
+      padding: 2rem 9%;
+    }
+
+    .heading {
+      text-align: center;
+      padding: 2rem 0;
+      padding-bottom: 3rem;
+      font-size: 3.5rem;
+      color: var(--black);
+    }
+
+    .heading span {
+      background: var(--purple);
+      color: #fff;
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.8rem 3rem;
+      font-size: 1.7rem;
+      border-radius: 0.5rem;
+      border: 0.2rem solid var(--black);
+      color: var(--black);
+      cursor: pointer;
+      background: none;
+    }
+
+    .btn:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 9%;
+      background: #fff;
+      box-shadow: var(--box-shadow);
+    }
+
+    .header .logo {
+      font-size: 2.2rem;
+      font-weight: bolder;
+      color: var(--black);
+    }
+
+    .header .logo i {
+      color: var(--purple);
+      margin-right: 0.5rem;
+    }
+
+    .header .navbar a {
+      font-size: 1.7rem;
+      margin: 0 1rem;
+      color: var(--black);
+    }
+
+    .header .navbar a:hover {
+      color: var(--purple);
+    }
+
+    .header .profile-btn {
+      background: var(--light-purple);
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.5rem;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    .header .profile-btn:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .header .profile-btn i {
+      margin-right: 0.5rem;
+    }
+
+    #menu-btn {
+      font-size: 2.5rem;
+      border-radius: 0.5rem;
+      background: #eee;
+      color: var(--purple);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Payment Container */
+    .payment-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10rem 2rem 5rem;
+      min-height: 100vh;
+      background: linear-gradient(334deg, #a855f7, #f0abfc);
+    }
+
+    .payment-form {
+      padding: 3rem;
+      width: 80rem;
+      max-width: 95%;
+      box-shadow: 0 5px 15px rgba(149, 69, 255, 0.2);
+      background: #faf5ff;
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+
+    .payment-form .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .payment-form .row .col {
+      flex: 1 1 30rem;
+    }
+
+    .payment-form .row .col .title {
+      font-size: 2.2rem;
+      color: #6b21a8;
+      padding-bottom: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #e9d5ff;
+    }
+
+    .payment-form .row .col .inputBox {
+      margin: 1.5rem 0;
+    }
+
+    .payment-form .row .col .inputBox span {
+      margin-bottom: 1rem;
+      display: block;
+      color: #7e22ce;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+
+    .payment-form .row .col .inputBox input,
+    .payment-form .row .col .inputBox select {
+      width: 100%;
+      border: 1px solid #a855f7;
+      padding: 1.2rem 1.5rem;
+      font-size: 1.5rem;
+      text-transform: none;
+      border-radius: 6px;
+      background-color: #fff0ff;
+      color: #333;
+    }
+
+    .payment-form .row .col .inputBox input:focus,
+    .payment-form .row .col .inputBox select:focus {
+      border: 2px solid #9333ea;
+      box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
+    }
+
+    .payment-form .row .col .flex {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .payment-form .row .col .flex .inputBox {
+      margin-top: 0.5rem;
+      flex: 1;
+    }
+
+    .payment-form .row .col .inputBox img {
+      height: 4rem;
+      margin-top: 0.5rem;
+      filter: drop-shadow(0 0 1px #9333ea);
+    }
+
+    .payment-form .submit-btn {
+      width: 100%;
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      background: #a855f7;
+      color: white;
+      margin-top: 2rem;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 4px 10px rgba(149, 69, 255, 0.3);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+
+    .payment-form .submit-btn:hover {
+      background: #9333ea;
+      transform: translateY(-2px);
+    }
+
+    .payment-summary {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .payment-summary h3 {
+      font-size: 1.8rem;
+      color: #6b21a8;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-summary .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .payment-summary .total {
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: #6b21a8;
+      border-top: 1px solid #e9d5ff;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .payment-method {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid #e9d5ff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .payment-method.active {
+      border-color: #9333ea;
+      background: #f3e8ff;
+    }
+
+    .payment-method i {
+      font-size: 2.5rem;
+      color: #9333ea;
+      margin-bottom: 1rem;
+    }
+
+    .payment-method p {
+      font-size: 1.4rem;
+      color: #6b21a8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+      html {
+        font-size: 55%;
+      }
+
+      .header {
+        padding: 2rem;
+      }
+
+      section {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #menu-btn {
+        display: initial;
+      }
+
+      .header .navbar {
+        position: absolute;
+        top: 110%;
+        right: -110%;
+        width: 30rem;
+        box-shadow: var(--box-shadow);
+        border-radius: 0.5rem;
+        background: #fff;
+      }
+
+      .header .navbar.active {
+        right: 2rem;
+        transition: 0.4s linear;
+      }
+
+      .header .navbar a {
+        font-size: 2rem;
+        margin: 2rem 2.5rem;
+        display: block;
+      }
+
+      .payment-form .row .col {
+        flex: 1 1 100%;
+      }
+
+      .payment-methods {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 450px) {
+      html {
+        font-size: 50%;
+      }
+
+      .payment-form {
+        padding: 2rem;
+      }
+
+      .payment-form .row .col .flex {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    .footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  gap: 2rem;
+}
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  color: var(--black);
+  padding: 1rem 0;
+}
+.footer .box-container .box a {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--light-color);
+  padding: 1rem 0;
+}
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--blue);
+}
+.footer .box-container .box a:hover i {
+  padding-right: 2rem;
+}
+footer {
+  background-color: #ede9fe;
+  color: white;
+}
+footer .end {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  height: 14vh;
+  font-size: 20px;
+  padding-top: 30px;
+  background-color: #e0e7ff;
+}
+footer span {
+  color: var(--blue);
+  font-weight: bolder;
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 2rem;
+  }
+  section {
+    padding: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  #menu-btn {
+    display: initial;
+  }
+  .header .navbar {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    width: 30rem;
+    border: var(--border);
+    background: #fff;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: top right;
+    transition: none;
+  }
+  .header .navbar.active {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.2s ease-out;
+    background-color: #ede9fe;
+  }
+  .header .navbar a {
+    font-size: 2rem;
+    display: block;
+    margin: 2.5rem;
+  }
+}
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
+/* Add this to your existing CSS */
+.btn-login {
+  background: #fff;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+}
+
+.btn-login:hover {
+  background: #fff;
+  color: var(--blue);
+  box-shadow: var(--box-shadow);
+}
+
+/* Responsive adjustments for auth forms */
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 2rem;
+  }
+  
+  .header .navbar a.btn {
+    display: none;
+  }
+}
+
+
+/* App Download Section */
+.app-download {
+  background-color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.app-download h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.app-links a img {
+  max-width: 160px;
+  height: auto;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.app-links a img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .app-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Footer Section */
+footer {
+  background-color: #222;
+  color: #060606;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #312f2f;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #494646;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: #007BFF;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: none;
+  z-index: 999;
+  transition: background 0.3s ease;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+}
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="index.html" class="logo animate__animated animate__fadeInLeft">
+      <i class="fas fa-heartbeat"></i> HelloDoc
+    </a>
+    <nav class="navbar">
+      <a href="index.html#home">home</a>
+      <a href="index.html#services">services</a>
+      <a href="index.html#about">about</a>
+      <a href="index.html#doctors">doctors</a>
+      <a href="index.html#book">book</a>
+      <a href="index.html#review">review</a>
+      <a href="index.html#blogs">blogs</a>
+      <a href="payment.html" class="active">Payment</a>
+      <a href="profile.html" class="profile-btn">
+        <i class="fas fa-user-circle"></i> Profile
+      </a>
+    </nav>
+    <div id="menu-btn" class="fas fa-bars"></div>
+  </header>
+
+  <!-- Payment Section -->
+  <div class="payment-container">
+    <form class="payment-form" action="">
+      <h2 class="heading"><span>Payment</span> Information</h2>
+
+      <div class="payment-summary">
+        <h3>Appointment Summary</h3>
+        <div class="summary-item">
+          <span>Consultation with Dr. Aditya Sharma</span>
+          <span>₹1500</span>
+        </div>
+        <div class="summary-item">
+          <span>Diagnostic Tests</span>
+          <span>₹2500</span>
+        </div>
+        <div class="summary-item">
+          <span>Service Fee</span>
+          <span>₹200</span>
+        </div>
+        <div class="summary-item total">
+          <span>Total Amount</span>
+          <span>₹4200</span>
+        </div>
+      </div>
+
+      <div class="payment-methods">
+        <div class="payment-method active">
+          <i class="far fa-credit-card"></i>
+          <p>Credit/Debit Card</p>
+        </div>
+        <div class="payment-method">
+          <i class="fas fa-wallet"></i>
+          <p>Wallet</p>
+        </div>
+        <div class="payment-method">
+          <i class="fas fa-university"></i>
+          <p>Net Banking</p>
+        </div>
+        <div class="payment-method">
+          <i class="fas fa-qrcode"></i>
+          <p>UPI</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h3 class="title">billing information</h3>
+
+          <div class="inputBox">
+            <span>full name :</span>
+            <input type="text" placeholder="Enter Your Full Name" required />
+          </div>
+          <div class="inputBox">
+            <span>email :</span>
+            <input type="email" placeholder="Enter Your Email" required />
+          </div>
+          <div class="inputBox">
+            <span>address :</span>
+            <input type="text" placeholder="Enter Your Address" required />
+          </div>
+          <div class="inputBox">
+            <span>city :</span>
+            <input type="text" placeholder="Enter Your City" required />
+          </div>
+
+          <div class="flex">
+            <div class="inputBox">
+              <span>state :</span>
+              <input type="text" placeholder="Enter Your state" required />
+            </div>
+            <div class="inputBox">
+              <span>zip code :</span>
+              <input type="text" placeholder="Enter zip code" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <h3 class="title">payment details</h3>
+
+          <div class="inputBox">
+            <span>cards accepted :</span>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRih-qtU4V1I3cBYT06Pjb4zAsz3TfQjrGpIQ&usqp=CAU"
+              alt="Accepted cards" />
+          </div>
+          <div class="inputBox">
+            <span>Name on card :</span>
+            <input type="text" placeholder="Enter name on card" required />
+          </div>
+          <div class="inputBox">
+            <span>Credit card number :</span>
+            <input type="text" placeholder="1111 2222 3333 4444" required />
+          </div>
+          <div class="flex">
+            <div class="inputBox">
+              <span>Exp month :</span>
+              <select required>
+                <option value="" disabled selected>Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div class="inputBox">
+              <span>Exp year :</span>
+              <select required>
+                <option value="" disabled selected>Year</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+              </select>
+            </div>
+            <div class="inputBox">
+              <span>CVV :</span>
+              <input type="text" placeholder="123" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="inputBox">
+        <input type="checkbox" id="save-info" checked />
+        <label for="save-info" style="display: inline; font-size: 1.4rem; color: #6b21a8;">
+          Save this information for next time
+        </label>
+      </div>
+
+      <input type="submit" value="Proceed to Payment" class="submit-btn" />
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>quick links</h3>
+        <a href="index.html#home"> <i class="fas fa-chevron-right"></i> home </a>
+        <a href="index.html#services"> <i class="fas fa-chevron-right"></i> services </a>
+        <a href="index.html#about"> <i class="fas fa-chevron-right"></i> about </a>
+        <a href="index.html#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
+        <a href="index.html#book"> <i class="fas fa-chevron-right"></i> book </a>
+        <a href="index.html#review"> <i class="fas fa-chevron-right"></i> review </a>
+        <a href="index.html#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
+      </div>
+      <div class="box">
+        <h3>our services</h3>
+        <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> physiotherapy </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> cardiology </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> ambulance </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> telemedicine </a>
+      </div>
+      <div class="box">
+        <h3>contact info</h3>
+        <a href="tel:+917568235462"> <i class="fas fa-phone"></i> +91 7568235462 </a>
+        <a href="tel:+1111432003"> <i class="fas fa-phone"></i> +111-143-2003 </a>
+        <a href="mailto:HelloDoc@gmail.com"> <i class="fas fa-envelope"></i> HelloDoc@gmail.com </a>
+        <a href="mailto:support@HelloDoc.com"> <i class="fas fa-envelope"></i> support@HelloDoc.com </a>
+        <a href="#"> <i class="fas fa-map-marker-alt"></i> Ahmedabad, India - 380001 </a>
+      </div>
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+        <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+        <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+        <a href="#"> <i class="fab fa-youtube"></i> youtube </a>
+      </div>
+    </div>
+    <div class="app-download">
+      <h3>Download Our App</h3>
+      <div class="app-links">
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png"
+            alt="Google Play"></a>
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png"
+            alt="App Store"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="end">
+      <p>copyrights &copy; <span id="year"></span> reserved by <span>HelloDoc Healthcare</span></p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">HIPAA Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Mobile menu toggle
+      const menuBtn = document.querySelector('#menu-btn');
+      const navbar = document.querySelector('.navbar');
+      
+      menuBtn.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        menuBtn.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+          navbar.classList.remove('active');
+          menuBtn.classList.remove('fa-times');
+        });
+      });
+      
+      // Back to top button
+      const backToTopBtn = document.querySelector('.back-to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = 'block';
+        } else {
+          backToTopBtn.style.display = 'none';
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      
+      // Payment method selection
+      const paymentMethods = document.querySelectorAll('.payment-method');
+      
+      paymentMethods.forEach(method => {
+        method.addEventListener('click', () => {
+          paymentMethods.forEach(m => m.classList.remove('active'));
+          method.classList.add('active');
+        });
+      });
+      
+      // Format credit card number
+      const cardNumberInput = document.querySelector('input[placeholder="1111 2222 3333 4444"]');
+      
+      cardNumberInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let matches = value.match(/\d{4,16}/g);
+        let match = matches && matches[0] || '';
+        let parts = [];
+        
+        for (let i=0, len=match.length; i<len; i+=4) {
+          parts.push(match.substring(i, i+4));
+        }
+        
+        if (parts.length) {
+          e.target.value = parts.join(' ');
+        } else {
+          e.target.value = value;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

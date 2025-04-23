@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HelloDoc - Advanced Healthcare Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chat-bubble@1.0.0/dist/Bubble.min.css" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen">
+    <div class="loader">
+      <div class="heart-rate">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="150px" height="73px" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
+          <polyline fill="none" stroke="#c084fc" stroke-width="3" stroke-miterlimit="10"
+            points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486" />
+        </svg>
+        <div class="fade-in"></div>
+        <div class="fade-out"></div>
+      </div>
+      <p>Loading HelloDoc...</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo animate__animated animate__fadeInLeft">
+      <i class="fas fa-heartbeat"></i> HelloDoc
+    </a>
+    <nav class="navbar">
+      <a href="#home">home</a>
+      <a href="#services">services</a>
+      <a href="#about">about</a>
+      <a href="#doctors">doctors</a>
+      <a href="#book">book</a>
+      <a href="#review">review</a>
+      <a href="#blogs">blogs</a>
+      <a href="payment.html">Payment</a>
+      <a href="profile.html" class="profile-btn">
+        <i class="fas fa-user-circle"></i> Profile
+      </a>
+    </nav>
+    <div id="menu-btn" class="fas fa-bars"></div>
+  </header>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="image animate__animated animate__fadeInLeft">
+      <img
+        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        alt="Healthcare professionals" />
+    </div>
+    <div class="content animate__animated animate__fadeInRight">
+      <h3>Medicines cure Diseases, But Doctors Cure Patients</h3>
+      <p>
+        HelloDoc provides comprehensive healthcare solutions with a special focus on patient care.
+        Our advanced telemedicine platform connects patients with top specialists worldwide,
+        ensuring access to quality healthcare from the comfort of your home.
+      </p>
+      <div class="cta-buttons">
+        <a href="#book" class="btn">
+          Book Appointment <span class="fas fa-chevron-right"></span>
+        </a>
+        <a href="#services" class="btn btn-outline">
+          Our Services <span class="fas fa-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="icons-container">
+    <div class="icons animate__animated animate__fadeInUp" data-delay="0.1s">
+      <i class="fas fa-user-md"></i>
+      <h3><span class="counter" data-target="180">0</span>+</h3>
+      <p>Specialist Doctors</p>
+    </div>
+    <div class="icons animate__animated animate__fadeInUp" data-delay="0.2s">
+      <i class="fas fa-users"></i>
+      <h3><span class="counter" data-target="2300">0</span>+</h3>
+      <p>Satisfied Patients</p>
+    </div>
+    <div class="icons animate__animated animate__fadeInUp" data-delay="0.3s">
+      <i class="fas fa-procedures"></i>
+      <h3><span class="counter" data-target="700">0</span>+</h3>
+      <p>Facility</p>
+    </div>
+    <div class="icons animate__animated animate__fadeInUp" data-delay="0.4s">
+      <i class="fas fa-hospital"></i>
+      <h3><span class="counter" data-target="70">0</span>+</h3>
+      <p>Available Hospitals</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h1 class="heading">our <span>services</span></h1>
+    <div class="box-container">
+      <!-- Existing Service Cards -->
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-notes-medical"></i>
+        <h3>Free Checkups</h3>
+        <p>Comprehensive health screenings and preventive care consultations at no cost to promote wellness.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Online Appointment</h3>
+        <p>Book, reschedule, or cancel appointments online with our easy-to-use scheduling system.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-prescription"></i>
+        <h3>E-Prescriptions</h3>
+        <p>Digital prescriptions sent directly to your preferred pharmacy for quick and easy medication access.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-pills"></i>
+        <h3>Medicine Delivery</h3>
+        <p>Get your prescribed medications delivered to your doorstep within hours of consultation.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-laptop-medical"></i>
+        <h3>Virtual Consultations</h3>
+        <p>Secure video consultations with specialists from the comfort of your home.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-heartbeat"></i>
+        <h3>Wellness Programs</h3>
+        <p>Personalized health and wellness plans tailored to your specific needs and goals.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+  
+      <!-- New: AI Chatbot Assistant -->
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-robot"></i>
+        <h3>AI Chatbot Assistant</h3>
+        <p>Instant 24/7 support from our intelligent AI chatbot to help with appointments, queries, and health advice.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+  
+      <!-- New: Health Monitoring Tools -->
+      <div class="box animate__animated animate__fadeInUp">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Health Monitoring Tools</h3>
+        <p>Track your vitals, sleep, and fitness metrics using our integrated wearable and mobile health solutions.</p>
+        <a href="#" class="btn">learn more <span class="fas fa-chevron-right"></span></a>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h1 class="heading"><span>about</span> us</h1>
+    <div class="row">
+      <div class="image animate__animated animate__fadeInLeft">
+        <img
+          src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt="Medical team" />
+      </div>
+      <div class="content animate__animated animate__fadeInRight">
+        <h3>We're revolutionizing healthcare with technology and compassion</h3>
+        <p>
+          HelloDoc combines cutting-edge medical technology with personalized care to deliver exceptional healthcare
+          experiences.
+          Our platform bridges the gap between patients and healthcare providers, making quality care accessible to
+          everyone.
+        </p>
+        <p>
+          With a network of over 180 specialists across 70+ facilities, we provide comprehensive care ranging from
+          primary
+          consultations to complex surgical interventions. Our patient-centered approach ensures you receive the right
+          care at the right time.
+        </p>
+        <div class="about-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>24/7 Emergency Services</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Multilingual Support</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Electronic Health Records</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>AI-Powered Diagnostics</span>
+          </div>
+        </div>
+        <a href="#" class="btn">
+          learn more <span class="fas fa-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section class="doctors" id="doctors">
+    <h1 class="heading">our <span>specialists</span></h1>
+    <div class="box-container">
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Madhu" />
+        <h3>Dr. Madhu Thumu</h3>
+        <span>Orthopedic Surgeon</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(124 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Kirthi" />
+        <h3>Dr. Kirthi Yeruva</h3>
+        <span>Trauma Specialist</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(98 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Kishor Varma" />
+        <h3>Dr. Kishor Varma</h3>
+        <span>ENT Specialist</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(87 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Akhil" />
+        <h3>Dr. Akhil Reddy</h3>
+        <span>Joint Replacement</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(156 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Arun Reddy" />
+        <h3>Dr. Arun Reddy</h3>
+        <span>Neurosurgeon</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(112 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img
+          src="https://images.unsplash.com/photo-1551601651-bc60f254d532?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="Dr. Aditya" />
+        <h3>Dr. Aditya Sharma</h3>
+        <span>Cardiologist</span>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(203 reviews)</span>
+        </div>
+        <div class="share">
+          <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+          <a href="#" class="fab fa-twitter" title="Twitter"></a>
+          <a href="#" class="fab fa-instagram" title="Instagram"></a>
+          <a href="#" class="fab fa-linkedin" title="LinkedIn"></a>
+        </div>
+        <a href="#book" class="btn">Book Consultation</a>
+      </div>
+    </div>
+    <div class="view-all">
+      <a href="#" class="btn">View All Specialists <span class="fas fa-chevron-right"></span></a>
+    </div>
+  </section>
+
+  <!-- Appointment Booking Section -->
+  <section class="book" id="book">
+    <h1 class="heading"><span>book</span> appointment</h1>
+    <div class="row">
+      <div class="image animate__animated animate__fadeInLeft">
+        <img
+          src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt="Appointment booking" />
+      </div>
+      <form name="google-sheet-form" method="post" class="animate__animated animate__fadeInRight">
+        <h3>schedule your visit</h3>
+        <input type="text" name="Name" placeholder="your full name" class="box" required />
+        <input type="number" name="Number" placeholder="your phone number" class="box" required />
+        <input type="email" name="Email ID" placeholder="your email address" class="box" required />
+        <input type="date" name="Date" class="box" required />
+        <select name="Department" class="box" required>
+          <option value="" disabled selected>Select Department</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Orthopedics">Orthopedics</option>
+          <option value="Pediatrics">Pediatrics</option>
+          <option value="Dermatology">Dermatology</option>
+          <option value="ENT">ENT</option>
+        </select>
+        <select name="Doctor" class="box" required>
+          <option value="" disabled selected>Select Doctor</option>
+          <option value="Dr. Madhu Thumu">Dr. Madhu Thumu</option>
+          <option value="Dr. Kirthi Yeruva">Dr. Kirthi Yeruva</option>
+          <option value="Dr. Kishor Varma">Dr. Kishor Varma</option>
+          <option value="Dr. Akhil Reddy">Dr. Akhil Reddy</option>
+          <option value="Dr. Arun Reddy">Dr. Arun Reddy</option>
+          <option value="Dr. Aditya Sharma">Dr. Aditya Sharma</option>
+        </select>
+        <textarea name="Message" class="box" placeholder="Any specific concerns or symptoms?" rows="3"></textarea>
+        <button type="submit" class="btn">
+          Confirm Booking <span class="fas fa-chevron-right"></span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="review" id="review">
+    <h1 class="heading">patient <span>testimonials</span></h1>
+    <div class="box-container">
+      <div class="box animate__animated animate__fadeInUp">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Vijay" />
+        <h3>Vijay Kumar</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p class="text">
+          "Dr. Arun Reddy's expertise in neurosurgery is unmatched. He took the time to explain my father's condition in
+          detail and provided exceptional care throughout the treatment process. The entire team at HelloDoc was
+          professional and compassionate."
+        </p>
+        <div class="review-date">
+          <i class="fas fa-calendar-alt"></i> March 15, 2025
+        </div>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya" />
+        <h3>Priya Sharma</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p class="text">
+          "The virtual consultation feature saved me hours of travel time. Dr. Aditya was attentive and thorough during
+          our video call. The e-prescription was sent directly to my local pharmacy, and my medication was delivered the
+          same day. Fantastic service!"
+        </p>
+        <div class="review-date">
+          <i class="fas fa-calendar-alt"></i> February 28, 2025
+        </div>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Nikhil" />
+        <h3>Nikhil Siddhartha</h3>
+        <div class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p class="text">
+          "From booking to follow-up, every interaction with HelloDoc has been seamless. Dr. Madhu's knee replacement
+          procedure was flawless, and the post-op care was exceptional. The staff was always available to answer my
+          questions promptly."
+        </p>
+        <div class="review-date">
+          <i class="fas fa-calendar-alt"></i> January 10, 2025
+        </div>
+      </div>
+    </div>
+    <div class="review-cta">
+      <p>Share your experience with us</p>
+      <a href="#" class="btn">Write a Review</a>
+    </div>
+  </section>
+
+  <!-- Blogs Section -->
+  <section class="blogs" id="blogs">
+    <h1 class="heading">health <span>insights</span></h1>
+    <div class="box-container">
+      <div class="box animate__animated animate__fadeInUp">
+        <div class="image">
+          <img
+            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Doctor responsibilities" />
+          <div class="date">
+            <span>05</span>
+            <span>mar</span>
+          </div>
+        </div>
+        <div class="content">
+          <div class="icon">
+            <a href="#"> <i class="fas fa-user"></i> by admin </a>
+            <a href="#"> <i class="fas fa-comment"></i> 14 comments </a>
+          </div>
+          <h3>Doctor's Responsibilities in the Digital Age</h3>
+          <p>
+            Exploring how modern physicians balance traditional patient care with technological advancements in
+            healthcare delivery.
+          </p>
+          <a href="#" class="btn">
+            read more <span class="fas fa-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <div class="image">
+          <img
+            src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Medical tests" />
+          <div class="date">
+            <span>12</span>
+            <span>mar</span>
+          </div>
+        </div>
+        <div class="content">
+          <div class="icon">
+            <a href="#"> <i class="fas fa-user"></i> by admin </a>
+            <a href="#"> <i class="fas fa-comment"></i> 8 comments </a>
+          </div>
+          <h3>Understanding Common Diagnostic Tests</h3>
+          <p>
+            A patient's guide to common medical tests - what to expect, how to prepare, and what results might indicate.
+          </p>
+          <a href="#" class="btn">
+            read more <span class="fas fa-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <div class="box animate__animated animate__fadeInUp">
+        <div class="image">
+          <img
+            src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            alt="Consultation" />
+          <div class="date">
+            <span>20</span>
+            <span>mar</span>
+          </div>
+        </div>
+        <div class="content">
+          <div class="icon">
+            <a href="#"> <i class="fas fa-user"></i> by admin </a>
+            <a href="#"> <i class="fas fa-comment"></i> 11 comments </a>
+          </div>
+          <h3>Maximizing Your Doctor Consultation</h3>
+          <p>
+            Tips for patients to make the most of their limited time with healthcare providers, whether in-person or
+            virtually.
+          </p>
+          <a href="#" class="btn">
+            read more <span class="fas fa-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="blog-cta">
+      <p>Stay updated with our health newsletter</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="content">
+      <h3>subscribe for latest updates</h3>
+      <p>
+        Get health tips, news, and special offers directly to your inbox. Stay informed about our latest services and
+        health initiatives.
+      </p>
+      <form class="newsletter-form">
+        <input type="email" name="email" placeholder="enter your email" class="email" />
+        <input type="submit" value="subscribe" class="btn" />
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <div class="box-container">
+      <div class="box">
+        <h3>quick links</h3>
+        <a href="#home"> <i class="fas fa-chevron-right"></i> home </a>
+        <a href="#services"> <i class="fas fa-chevron-right"></i> services </a>
+        <a href="#about"> <i class="fas fa-chevron-right"></i> about </a>
+        <a href="#doctors"> <i class="fas fa-chevron-right"></i> doctors </a>
+        <a href="#book"> <i class="fas fa-chevron-right"></i> book </a>
+        <a href="#review"> <i class="fas fa-chevron-right"></i> review </a>
+        <a href="#blogs"> <i class="fas fa-chevron-right"></i> blogs </a>
+      </div>
+      <div class="box">
+        <h3>our services</h3>
+        <a href="#"> <i class="fas fa-chevron-right"></i> dental care </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> physiotherapy </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> cardiology </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> diagnosis </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> ambulance </a>
+        <a href="#"> <i class="fas fa-chevron-right"></i> telemedicine </a>
+      </div>
+      <div class="box">
+        <h3>contact info</h3>
+        <a href="tel:+917568235462"> <i class="fas fa-phone"></i> +91 7568235462 </a>
+        <a href="tel:+1111432003"> <i class="fas fa-phone"></i> +111-143-2003 </a>
+        <a href="mailto:HelloDoc@gmail.com"> <i class="fas fa-envelope"></i> HelloDoc@gmail.com </a>
+        <a href="mailto:support@HelloDoc.com"> <i class="fas fa-envelope"></i> support@HelloDoc.com </a>
+        <a href="#"> <i class="fas fa-map-marker-alt"></i> Ahmedabad, India - 380001 </a>
+      </div>
+      <div class="box">
+        <h3>follow us</h3>
+        <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+        <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+        <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+        <a href="#"> <i class="fab fa-youtube"></i> youtube </a>
+      </div>
+    </div>
+    <div class="app-download">
+      <h3>Download Our App</h3>
+      <div class="app-links">
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png"
+            alt="Google Play"></a>
+        <a href="#"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png"
+            alt="App Store"></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="end">
+      <p>copyrights &copy; <span id="year"></span> reserved by <span>HelloDoc Healthcare</span></p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">HIPAA Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#home" class="back-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- AI Chatbot -->
+  <div class="chatbot-container">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">
+        <i class="fas fa-robot"></i>
+      </div>
+      <div class="chatbot-info">
+        <h4>HelloDoc Assistant</h4>
+        <p>AI Healthcare Bot</p>
+      </div>
+      <button class="chatbot-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="chatbot-messages">
+      <div class="chatbot-welcome">
+        <p>Hello! I'm your HelloDoc assistant. How can I help you today?</p>
+        <div class="quick-questions">
+          <button class="quick-btn">Book an appointment</button>
+          <button class="quick-btn">Find a specialist</button>
+          <button class="quick-btn">Emergency contacts</button>
+          <button class="quick-btn">Medication query</button>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" placeholder="Type your health question here..." />
+      <button class="chatbot-send">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  <button class="chatbot-toggle">
+    <i class="fas fa-comment-medical"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chat-bubble@1.0.0/dist/Bubble.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.counter');
+      let hasAnimated = false; // Prevents repeated animation
+  
+      function animateCounters() {
+        if (hasAnimated) return;
+  
+        const section = document.querySelector('.icons-container');
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+  
+        if (sectionTop < windowHeight - 100) {
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const increment = target / 200; // Adjust speed here
+            let count = 0;
+  
+            const updateCount = () => {
+              count += increment;
+              if (count < target) {
+                counter.textContent = Math.ceil(count);
+                requestAnimationFrame(updateCount);
+              } else {
+                counter.textContent = target;
+              }
+            };
+  
+            updateCount();
+          });
+  
+          hasAnimated = true;
+        }
+      }
+  
+      // Trigger on scroll
+      window.addEventListener('scroll', animateCounters);
+      animateCounters(); // Also trigger if already in view
+    });
+  </script>  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Elements
+      const chatbotContainer = document.querySelector('.chatbot-container');
+      const chatbotToggle = document.querySelector('.chatbot-toggle');
+      const chatbotClose = document.querySelector('.chatbot-close');
+      const chatbotInput = document.querySelector('.chatbot-input input');
+      const chatbotMessages = document.querySelector('.chatbot-messages');
+      const chatbotSend = document.querySelector('.chatbot-send');
+      const quickButtons = document.querySelectorAll('.quick-btn');
+      const backToTop = document.querySelector('.back-to-top');
+  
+      const quickQuestionsResponses = [
+        "You can book an appointment through our website or mobile app.",
+        "We have a wide range of specialists available. Please specify your needs.",
+        "In case of emergencies, please call our emergency hotline at +91 7568235462.",
+        "Feel free to ask about any medication-related queries."
+      ];
+  
+      // Loading screen
+      window.addEventListener('load', () => {
+        const loadingScreen = document.querySelector('.loading-screen');
+        if (loadingScreen) loadingScreen.style.display = 'none';
+      });
+  
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+  
+      // Animate elements on scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll('.animate__animated');
+        elements.forEach(el => {
+          const position = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+  
+          if (position < windowHeight - 100) {
+            const animation = el.dataset.animation || 'fadeInUp';
+            const delay = el.dataset.delay || '0';
+  
+            el.style.animationDelay = `${delay}s`;
+            el.classList.add(animation);
+          }
+        });
+      }
+  
+      window.addEventListener('scroll', animateOnScroll);
+      animateOnScroll();
+  
+      // Back to Top button
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+  
+      // Toggle Chatbot
+      chatbotToggle.addEventListener('click', () => {
+        chatbotContainer.classList.toggle('show-chatbot');
+      });
+  
+      chatbotClose.addEventListener('click', () => {
+        chatbotContainer.classList.remove('show-chatbot');
+      });
+  
+      // Handle sending user messages
+      function sendMessage(message) {
+        if (!message.trim()) return;
+  
+        const userMsg = createMessageElement('user-message', message);
+        chatbotMessages.appendChild(userMsg);
+  
+        chatbotInput.value = '';
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  
+        // Simulated AI response
+        setTimeout(() => {
+          const aiMsg = createMessageElement('ai-response', "I'm here to help! " + message);
+          chatbotMessages.appendChild(aiMsg);
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }, 1000);
+      }
+  
+      // Helper: Create message element
+      function createMessageElement(className, text) {
+        const msg = document.createElement('div');
+        msg.classList.add(className);
+        msg.textContent = text;
+        return msg;
+      }
+  
+      // Send message on button click
+      chatbotSend.addEventListener('click', () => {
+        sendMessage(chatbotInput.value);
+      });
+  
+      // Send message on Enter key
+      chatbotInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage(chatbotInput.value);
+      });
+  
+      // Quick response buttons
+      quickButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          const response = quickQuestionsResponses[index] || "How can I assist further?";
+          const userText = btn.textContent;
+          sendMessage(userText);
+  
+          setTimeout(() => {
+            const responseMsg = createMessageElement('ai-response', response);
+            chatbotMessages.appendChild(responseMsg);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+          }, 1000);
+        });
+      });
+    });
+  </script>
+  
+</body>
+
+</html>
